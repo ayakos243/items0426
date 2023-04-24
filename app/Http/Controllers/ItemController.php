@@ -44,14 +44,57 @@ class ItemController extends Controller
                 'name' => 'required|max:100',
             ]);
 
-            // 商品登録
-            Item::create([
-                'user_id' => Auth::user()->id,
-                'name' => $request->name,
-                'type' => $request->type,
-                'detail' => $request->detail,
-            ]);
+    //     //商品のデータを受け取る
+    //     $inputs = $request->all();
 
+        // \DB::beginTransaction();
+        // // try {
+        // //商品を登録
+        // // $item = Item::find($inputs['id']); 
+        // $item->fill([
+        //     'id' => $inputs['id'],
+        //     'name' => $inputs['name'],
+        //     'detail' => $inputs['detail'],
+        //     'type' => $inputs['type'],
+        //     'image' => $inputs['image'],
+        // ]);
+
+        // $item->save();
+        // \DB::commit();
+        // } catch(\Throwable $e) {
+        //     \DB::rollback();
+        //     abort(500);
+        // }
+        return redirect(route('items'));
+    }
+
+
+    /**
+     * 商品登録画面を表示
+     */
+    public function create(){
+        return view('item.add');
+    }
+
+    // 画像をリクエストして保存する
+    public function store(Request $request)
+    {
+
+        // 画像フォームでリクエストした画像情報を取得
+        $image = $request->file('image');
+
+        //ファイルの保存とパスの取得
+        $path = isset($image)?$image->store('image','public'):"";
+    
+        // データベースに登録する処理
+        Item::update([
+            'user_id' => 1, // TODO
+            'name' => $request ->name,
+            'type' => $request ->type,
+            'detail' => $request -> detail,
+            'image' => $path,
+        ]);
+    
             return redirect('/items');
         }
 
