@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
@@ -11,11 +12,16 @@ class Item extends Model
      *
      * @var array<int, string>
      */
+
+    protected $table ='items';
+    
     protected $fillable = [
+        'id',
         'user_id',
         'name',
         'type',
         'detail',
+        'image',
     ];
 
     /**
@@ -33,4 +39,8 @@ class Item extends Model
      */
     protected $casts = [
     ];
+
+    use HasFactory;
+
+
 }

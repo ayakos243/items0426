@@ -228,8 +228,19 @@ return [
         [
             'text' => '商品一覧',
             'url'  => 'items',
-            'icon' => 'fas fa-gamepad',
+            'icon' => 'fas fa-list',
+        ],       
+        [
+            'text' => '商品登録',
+            'url'  => 'items/add',
+            'icon' => 'fa fa-camera-retro fa-lg', 
         ],
+        [
+            'text' => 'ログアウト',
+            'url'  => 'logout',
+            'icon' => 'fa fa-angle-double-right',
+        ],
+            
 
         // AdminLTEデフォルト
         /*
