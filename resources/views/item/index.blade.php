@@ -54,13 +54,8 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
-                                    <!-- <td>{{ $item->detail }}</td> -->
-                                    <td><img src="{{ Storage::url($item->image) }}" width="25%"></td>
+                                    <td><img src="data:image/jpg;base64, {{ $item->image }}" width="25%"></td>
                                     <td><button type="button" class="btn btn-primary" onclick="location.href='/items/detail/{{ $item->id }}'">詳細</button></td>
-                                    <!-- <td><button type="button" class="btn btn-primary" onclick="location.href='/items/edit/{{ $item->id }}'">編集</button></td>
-                                    <form method="POST" action="{{ route('delete', $item->id) }}" onSubmit="return checkDelete()">
-                                    @csrf
-                                    <td><button type="submit" class="btn btn-primary" onclick=>削除</button></td> -->
                                 </tr>
                             @endforeach
                         </tbody>

@@ -38,7 +38,7 @@
                             <label for="image">画像</label>
                             <div>                          
                             @if ($item->image !=='')
-                            <img src="{{ \Storage::url($item->image) }}" width="25%">
+                            <img src="data:image/jpg;base64, {{ $item->image }}" width="25%">
                             @else
                             <img src="{{ \Storage::url('items/no_image.png') }}">
                             @endif

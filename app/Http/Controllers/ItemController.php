@@ -148,12 +148,15 @@ class ItemController extends Controller
     // 画像をリクエストして保存する
     public function store(Request $request)
     {
-
+        $image = null;
+        if(!is_null($request->file('image'))){
+            $image = base64_encode(file_get_contents($request->file('image')));
+        }
         // 画像フォームでリクエストした画像情報を取得
-        $image = $request->file('image');
+
 
         //ファイルの保存とパスの取得
-        $path = isset($image)?$image->store('image','public'):"";
+        // $path = isset($image)?$image->store('image','public'):"";
     
         // データベースに登録する処理
         Item::create([
@@ -161,7 +164,7 @@ class ItemController extends Controller
             'name' => $request ->name,
             'type' => $request ->type,
             'detail' => $request -> detail,
-            'image' => $path,
+            'image' => $image,
         ]);
     
     // 一覧へリダイレクト

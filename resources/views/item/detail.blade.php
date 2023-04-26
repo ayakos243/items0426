@@ -30,7 +30,7 @@
                             <tr><td>名前</td><td>{{ $item->name }}</td></tr>
                             <tr><td>種別</td><td>{{ $item->type }}</td></tr>
                             <tr><td>詳細</td><td style="white-space:normal;">{{ $item->detail }}</td></tr>
-                            <tr><td>画像</td><td>@if ($item->image !=='')<img src="{{ Storage::url($item->image) }}" width="25%">@else<img src="{{ \Storage::url('item/noimage.png') }}">@endif</td></tr>                            
+                            <tr><td>画像</td><td>@if ($item->image !=='')<img src="data:image/jpg;base64, {{ $item->image }}" width="25%">@else<img src="{{ \Storage::url('item/noimage.png') }}">@endif</td></tr>                            
                         </thead>
                     </table>
                 </div>
