@@ -18,7 +18,6 @@
                                 <form method="POST" action="{{ route('delete', $item->id) }}" onSubmit="return checkDelete()">
                                 @csrf
                                 <button type="submit" class="btn btn-default" onclick=>削除</button>
-                                <!-- <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a> -->
                             </div>
                         </div>
                     </div>

@@ -102,7 +102,6 @@ class ItemController extends Controller
             \Session::flash('err_msg','データがありません');
             return redirect(route('items'));
         }
-
         return view('item.edit',['item' => $item]);
     }
 

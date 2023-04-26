@@ -27,6 +27,7 @@
                 <p style="color:blue">{{ session('message') }}</p>
                 <div class="card-tools">
                         <div class="input-group input-group-sm">
+                        <!-- ダウンロードボタン -->
                             <div class="input-group-append">
                                 <a href="{{ route('download')}}" class="btn btn-default">ダウンロード</a>
                             </div>

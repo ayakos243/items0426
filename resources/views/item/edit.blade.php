@@ -66,7 +66,6 @@
                     </div>
                 @endif
             
-
                     <div class="card-footer">
                     <!-- キャンセル時はitemes 一覧に戻る-->
                     <a class="btn btn-secondary" href="{{ route('items') }}">
