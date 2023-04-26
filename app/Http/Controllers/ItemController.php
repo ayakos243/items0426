@@ -112,6 +112,10 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id){
 
+        $request->validate([
+        'name' => ['required'],
+        ]);
+
         $image = $request->file('image');
 
         $item = Item::find($id);
@@ -147,6 +151,11 @@ class ItemController extends Controller
     // 画像をリクエストして保存する
     public function store(Request $request)
     {
+
+        $request->validate([
+        'name' => ['required'],
+        ]);
+
         $image = null;
         if(!is_null($request->file('image'))){
             $image = base64_encode(file_get_contents($request->file('image')));

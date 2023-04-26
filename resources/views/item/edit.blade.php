@@ -53,7 +53,7 @@
                         </div>
                     </div>
 
-                <!-- バリデーションを受け取るための処理 もしnameのバリデーションがあったら最初のエラーを-->
+                <!-- バリデーションを受け取るための処理 もしnameのバリデーションがあったら最初のエラーを
                 @if ($errors->has('name'))
                     <div class="text-danger">
                         {{ $errors->first('name') }}
@@ -64,7 +64,7 @@
                     <div class="text-danger">
                         {{ $errors->first('detail') }}
                     </div>
-                @endif
+                @endif -->
             
                     <div class="card-footer">
                     <!-- キャンセル時はitemes 一覧に戻る-->
