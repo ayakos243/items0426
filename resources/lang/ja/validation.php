@@ -153,6 +153,6 @@ return [
     |
     */
 
-    'attributes' => ['name' => '商品名'],
+    'attributes' => ['name' => '商品名','image' => '「画像」'],
 
 ];

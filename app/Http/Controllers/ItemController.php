@@ -113,28 +113,34 @@ class ItemController extends Controller
     public function update(Request $request, $id){
 
         $request->validate([
-        'name' => ['required'],
+        'name' => 'required',
+        // 'image' => ['requiredmax:1024','mimes:jpg,jpeg,png,gif'], 
+        'image'=> 'file|image|mimes:jpeg,png,jpg,gif|max:2048',    
         ]);
 
         $image = $request->file('image');
+
+        $image = null;
+        if(!is_null($request->file('image'))){
+            $image = base64_encode(file_get_contents($request->file('image')));
+        }
 
         $item = Item::find($id);
         $path = $item->image;
 
         // 現在の画像ファイルの削除
-        if(!is_null($image)){
-        \Storage::disk('public')->delete($path);
+        // if(!is_null($image)){
+        // \Storage::disk('public')->delete($path);
         
         // 選択された画像ファイルを保存してパスをセット
-        $path = $image->store('image', 'public');
-        // dd($path);        
-        }
+        // $path = $image->store('image', 'public');        
+        // }
         
         $item->update([
             'name' => $request ->name,
             'type' => $request ->type,
             'detail' => $request -> detail,
-            'image' => $path,
+            'image' => $image,
         ]);
 
         return redirect(route('items'))->with('message', '更新しました');
@@ -154,6 +160,7 @@ class ItemController extends Controller
 
         $request->validate([
         'name' => ['required'],
+        'image'=> 'file|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $image = null;
@@ -161,7 +168,6 @@ class ItemController extends Controller
             $image = base64_encode(file_get_contents($request->file('image')));
         }
         // 画像フォームでリクエストした画像情報を取得
-
 
         //ファイルの保存とパスの取得
         // $path = isset($image)?$image->store('image','public'):"";

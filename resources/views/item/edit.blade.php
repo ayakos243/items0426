@@ -38,9 +38,13 @@
                             <label for="image">画像</label>
                             <div>                          
                             @if ($item->image !=='')
+                            <img src="data:image/jpeg;base64, {{ $item->image }}" width="25%">
+                            @elseif ($item->image !=='')                            
                             <img src="data:image/jpg;base64, {{ $item->image }}" width="25%">
-                            @else
-                            <img src="{{ \Storage::url('items/no_image.png') }}">
+                            @elseif ($item->image !=='')
+                            <img src="data:image/png;base64, {{ $item->image }}" width="25%">
+                            @elseif ($item->image !=='')
+                            <img src="data:image/gif;base64, {{ $item->image }}" width="25%">
                             @endif
                             </div>
                             <input type="file" class="form-control" id="image" name="image"  value="{{ $item->image }}">
@@ -52,19 +56,6 @@
                             <input type="text" class="form-control" id="detail" name="detail" placeholder="詳細説明" value="{{ $item->detail }}">
                         </div>
                     </div>
-
-                <!-- バリデーションを受け取るための処理 もしnameのバリデーションがあったら最初のエラーを
-                @if ($errors->has('name'))
-                    <div class="text-danger">
-                        {{ $errors->first('name') }}
-                    </div>
-                    @endif
-                    </div>
-                @if ($errors->has('detail'))
-                    <div class="text-danger">
-                        {{ $errors->first('detail') }}
-                    </div>
-                @endif -->
             
                     <div class="card-footer">
                     <!-- キャンセル時はitemes 一覧に戻る-->
